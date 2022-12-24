@@ -52,7 +52,7 @@ header {
             margin-left: 12px;
             height: 7px;
             width: 11px;
-            background-image: url(/img/arrow-black.svg);
+            background-image: url(../img/arrow-black.svg);
             background-position: right center;
             background-repeat: no-repeat;
             background-size: contain;
@@ -82,7 +82,7 @@ header {
     height: 40px;
     width: 40px;
     background-color: transparent;
-    background: url(/img/mobile-menu.svg) center no-repeat;
+    background: url(../img/mobile-menu.svg) center no-repeat;
     background-size: 32px;
     font-size: 0;
     line-height: 0;
@@ -100,7 +100,7 @@ header {
         border-radius: 0 0 30px 30px;
 
         .mobile-menu {
-            background-image: url(/img/mobile-close.svg);
+            background-image: url(../img/mobile-close.svg);
         }
 
         .container {
