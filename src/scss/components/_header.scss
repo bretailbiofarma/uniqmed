@@ -1,0 +1,135 @@
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+
+    .container {
+        padding-top: 40px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+
+        @include bp {
+            padding-top: 60px;
+        }
+    }
+
+    nav {
+        display: none;
+
+        @include bp {
+            display: block;
+            margin-left: auto;
+        }
+    }
+
+    a {
+        font-weight: 500;
+    }
+
+    ul {
+        display: flex;
+    }
+
+    li {
+        @include bp {
+            margin-right: 68px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .link {
+        font-weight: 500;
+
+        &::after {
+            content: "";
+            display: inline-block;
+            margin-left: 12px;
+            height: 7px;
+            width: 11px;
+            background-image: url(/img/arrow-black.svg);
+            background-position: right center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            vertical-align: middle;
+        }
+    }
+
+}
+
+.logo {
+    line-height: 0;
+    font-size: 0;
+
+    img {
+        width: 115.6px;
+        height: 25.3px;
+
+        @include bp {
+            width: 156px;
+            height: 59px;
+        }
+    }
+}
+
+.mobile-menu {
+    margin-left: auto;
+    height: 40px;
+    width: 40px;
+    background-color: transparent;
+    background: url(/img/mobile-menu.svg) center no-repeat;
+    background-size: 32px;
+    font-size: 0;
+    line-height: 0;
+    border: none;
+    cursor: pointer;
+
+    @include bp {
+        display: none;
+    }
+}
+
+@include max-bp {
+    .js-open {
+        background-color: $white;
+        border-radius: 0 0 30px 30px;
+
+        .mobile-menu {
+            background-image: url(/img/mobile-close.svg);
+        }
+
+        .container {
+            padding-bottom: 49px;
+        }
+
+        nav {
+            display: block;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+
+            li {
+                width: 100%;
+            }
+
+            a {
+                display: inline-block;
+                padding: 4px 0;
+            }
+        }
+
+        .link {
+            padding: 10px 0;
+        }
+    }
+}

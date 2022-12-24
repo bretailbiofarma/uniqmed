@@ -1,0 +1,39 @@
+.hero {
+  height: 810px;
+  background: linear-gradient(360deg, #ffffff 0%, rgba(255, 255, 255, 0) 29.32%);
+  
+  @include bp {
+    height: 810px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+  }
+
+  strong {
+    color: $blue;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+
+    @include bp {
+      margin-bottom: 60px;
+    }
+  }
+
+  p {
+    margin-bottom: 33px;
+    font-size: 18px;
+
+    @include bp {
+      margin-bottom: 80px;
+      max-width: 962px;
+    }
+  }
+}

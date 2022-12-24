@@ -1,0 +1,49 @@
+@import "common";
+
+.error {
+    @include resp(
+        (
+            "webp": "/img/bg-404.webp",
+            "jpg": "/img/bg-404-lg.jpg",
+        ),
+        (
+            "webp": "/img/bg-404.webp",
+            "jpg": "/img/bg-404-lg.jpg",
+        ),
+        (
+            "webp": "/img/bg-404.webp",
+            "jpg": "/img/bg-404-xl.jpg",
+        ),
+        (
+            "webp": "/img/bg-404.webp",
+            "jpg": "/img/bg-404-xxl.jpg",
+        ),
+        (
+            "webp": "/img/bg-404.webp",
+            "jpg": "/img/bg-404.jpg",
+        )
+    );
+
+    height: 100vh;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: $white-light;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    @include bp {
+        justify-content: flex-end;
+        padding-bottom: 205px;
+        text-align: left;
+    }
+
+    h1 {
+        max-width: 760px;
+        margin-bottom: 55px;
+        font-size: 36px;
+        line-height: l(36, 42);
+    }
+}
