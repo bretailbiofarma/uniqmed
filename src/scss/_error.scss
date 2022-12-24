@@ -3,24 +3,24 @@
 .error {
     @include resp(
         (
-            "webp": "/img/bg-404.webp",
-            "jpg": "/img/bg-404-lg.jpg",
+            "webp": "/../img/bg-404.webp",
+            "jpg": "/../img/bg-404-lg.jpg",
         ),
         (
-            "webp": "/img/bg-404.webp",
-            "jpg": "/img/bg-404-lg.jpg",
+            "webp": "/../img/bg-404.webp",
+            "jpg": "/../img/bg-404-lg.jpg",
         ),
         (
-            "webp": "/img/bg-404.webp",
-            "jpg": "/img/bg-404-xl.jpg",
+            "webp": "/../img/bg-404.webp",
+            "jpg": "/../img/bg-404-xl.jpg",
         ),
         (
-            "webp": "/img/bg-404.webp",
-            "jpg": "/img/bg-404-xxl.jpg",
+            "webp": "/../img/bg-404.webp",
+            "jpg": "/../img/bg-404-xxl.jpg",
         ),
         (
-            "webp": "/img/bg-404.webp",
-            "jpg": "/img/bg-404.jpg",
+            "webp": "/../img/bg-404.webp",
+            "jpg": "/../img/bg-404.jpg",
         )
     );
 
