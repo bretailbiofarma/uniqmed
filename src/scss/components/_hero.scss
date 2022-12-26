@@ -1,7 +1,32 @@
 .hero {
   height: 810px;
-  background: linear-gradient(360deg, #ffffff 0%, rgba(255, 255, 255, 0) 29.32%);
-  
+  background: linear-gradient(360deg, #ffffff 0%, rgba(255, 255, 255, 0) 29.32%), url(../img/bg-header.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include resp(
+    (
+        "webp": "../img/bg-header-lg.webp",
+        "jpg": "../img/bg-header-lg.jpg",
+    ),
+    (
+        "webp": "../img/bg-header-lg.webp",
+        "jpg": "../img/bg-header-lg.jpg",
+    ),
+    (
+        "webp": "../img/bg-header-xl.webp",
+        "jpg": "../img/bg-header-xl.jpg",
+    ),
+    (
+        "webp": "../img/bg-header-xxl.webp",
+        "jpg": "../img/bg-header-xxl.jpg",
+    ),
+    (
+        "webp": "../img/bg-header.webp",
+        "jpg": "../img/bg-header.jpg",
+    )
+);
+
   @include bp {
     height: 810px;
   }

@@ -1,12 +1,9 @@
 footer {
     width: 100%;
     border-top: 1px solid $black;
-
-    @include bp {
-        background-color: transparent;
-        position: absolute;
-        bottom: 0;
-    }
+    background-color: transparent;
+    position: absolute;
+    bottom: 0;
 
     p {
         padding-top: 42px;

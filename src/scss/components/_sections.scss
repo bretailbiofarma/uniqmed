@@ -1,5 +1,5 @@
 .section {
-  $deg: 335deg;
+  $deg: 340deg;
 
   position: relative;
   color: $white-light;
@@ -92,7 +92,6 @@
     position: absolute;
     z-index: 200;
     overflow: hidden;
-    top: 84px;
     top: 0;
     padding-bottom: 64.17%;
     left: 31px;
@@ -100,7 +99,7 @@
     border-radius: 30px;
 
     @include bp {
-      width: 100%;
+      width: 52%;
       top: 54px;
       bottom: 54px;
       right: auto;
@@ -114,15 +113,9 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      height: 100%;
       width: 100%;
-      background-size: cover;
-      background-position: center;
       background-repeat: no-repeat;
-
-      @include bp {
-        // background-size: contain;
-      }
+      background-size: cover;
 
       @include bp-xxl {
         background-size: cover;
@@ -149,7 +142,7 @@
 
     .section-picture {
       @include bp {
-        right: -57%;
+        right: -11%;
         border-top-left-radius: 25px;
         border-bottom-left-radius: 50px;
         transform: skew($deg);
@@ -158,8 +151,8 @@
       &::before {
         @include resp(
           (
-            "webp": "../img/bg-about-sm.webp",
-            "jpg": "../img/bg-about-sm.jpg",
+            "webp": "../img/bg-about-lg.webp",
+            "jpg": "../img/bg-about-lg.jpg",
           ),
           (
             "webp": "../img/bg-about-lg.webp",
@@ -180,9 +173,9 @@
         );
 
         @include bp {
-          right: 0;
-          left: -145px;
-          background-position: left center;
+          right: 20%;
+          background-position: right center;
+          background-size: cover;
           transform: skew(-$deg);
         }
 
@@ -223,7 +216,7 @@
 
     .section-picture {
       @include bp {
-        left: -57%;
+        left: -11%;
         border-top-right-radius: 25px;
         border-bottom-right-radius: 50px;
         transform: skew(-$deg);
@@ -248,14 +241,15 @@
             "jpg": "../img/bg-help-xxl.jpg",
           ),
           (
-            "webp": "../img/bg-help.webp",  
+            "webp": "../img/bg-help.webp",
             "jpg": "../img/bg-help.jpg",
           )
         );
 
         @include bp {
-          right: -145px;
+          left: 20%;
           background-position: right center;
+          background-size: cover;
           transform: skew($deg);
         }
 

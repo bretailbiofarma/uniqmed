@@ -26,6 +26,13 @@ const styleToFile = require("posthtml-style-to-file");
 const inlinesource = require("gulp-inline-source");
 // const validate = require("posthtml-w3c");
 
+const changed = require("gulp-changed");
+const imagemin = require("gulp-imagemin");
+const recompress = require("imagemin-jpeg-recompress");
+const pngquant = require("imagemin-pngquant");
+const webpConv = require("gulp-webp");
+const sharpResponsive = require("gulp-sharp-responsive");
+
 const posthtmlPlugins = [
   postHTMLNoRef({
     attr: ["noopener", "noreferrer"],
@@ -41,7 +48,7 @@ const posthtmlPlugins = [
   htmlnano(),
 ];
 
-const deleteFolderRecursive = function(directoryPath) {
+const deleteFolderRecursive = function (directoryPath) {
   if (fs.existsSync(directoryPath)) {
     fs.readdirSync(directoryPath).forEach((file, index) => {
       const curPath = path.join(directoryPath, file);
@@ -98,12 +105,62 @@ task("scss", () => {
     });
 });
 
-task("img", () => {
-  const imgSrc = `${_pathSrc}/img/**/*`;
-  const imgBuild = `${_pathBuild}/img/`;
+task("img", parallel(
+  () => {
+    const imgSrc = `${_pathSrc}/img/**/*`;
+    const imgBuild = `${_pathBuild}/img/`;
 
-  return src(imgSrc).pipe(dest(imgBuild));
-});
+    return src(`${imgSrc}.svg`).pipe(dest(imgBuild));
+  },
+  () => {
+    const imgSrc = `${_pathSrc}/img/**/*`;
+    const imgBuild = `${_pathBuild}/img/`;
+
+    return src(`${imgSrc}.+(png|jpg|jpeg|gif)`)
+      .pipe(changed(imgBuild))
+      .pipe(
+        sharpResponsive({
+          formats: [
+            // { width: 512, rename: { suffix: "-sm" } },
+            // { width: 992, rename: { suffix: "-lg" } },
+            { width: 1440, rename: { suffix: "-xl" } },
+            { width: 1920, rename: { suffix: "-xxl" } },
+          ],
+          includeOriginalFile: true,
+        })
+      )
+      .pipe(
+        imagemin(
+          {
+            interlaced: true,
+            progressive: true,
+            optimizationLevel: 5,
+          },
+          [
+            recompress({
+              loops: 6,
+              min: 50,
+              max: 90,
+              quality: "high",
+              use: [
+                pngquant({
+                  quality: [0.8, 1],
+                  strip: true,
+                  speed: 1,
+                }),
+              ],
+            }),
+            imagemin.gifsicle(),
+            imagemin.optipng(),
+            imagemin.svgo(),
+          ]
+        )
+      )
+      .pipe(dest(imgBuild))
+      .pipe(webpConv())
+      .pipe(dest(imgBuild));
+  }
+));
 
 task("fonts", () => {
   const fontsSrc = `${_pathSrc}/fonts/**/*`;
@@ -118,7 +175,7 @@ task("empty", async () => {
   return true;
 });
 
-gulp.task("watch", function() {
+task("watch", function () {
   browserSync.init({
     server: _pathBuild,
   });
@@ -153,9 +210,10 @@ gulp.task("watch", function() {
   gulp
     .watch(
       _pathSrc + "img/**/*",
-      gulp.parallel(() => {
-        return src(`${_pathSrc}/img/**/*`).pipe(dest(`${_pathBuild}/img`));
-      })
+      gulp.series('img')
+      // gulp.parallel(() => {
+      //   return src(`${_pathSrc}/img/**/*`).pipe(dest(`${_pathBuild}/img`));
+      // })
     )
     .on("change", browserSync.reload);
 

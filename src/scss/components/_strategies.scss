@@ -3,6 +3,32 @@
     display: flex;
     flex-direction: column;
     background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+    background-size: cover;
+    background-position: right bottom;
+    background-repeat: no-repeat;
+
+    @include resp(
+        (
+            "webp": "../img/bg-strategies-lg.webp",
+            "jpg": "../img/bg-strategies-lg.jpg",
+        ),
+        (
+            "webp": "../img/bg-strategies-lg.webp",
+            "jpg": "../img/bg-strategies-lg.jpg",
+        ),
+        (
+            "webp": "../img/bg-strategies-xl.webp",
+            "jpg": "../img/bg-strategies-xl.jpg",
+        ),
+        (
+            "webp": "../img/bg-strategies-xxl.webp",
+            "jpg": "../img/bg-strategies-xxl.jpg",
+        ),
+        (
+            "webp": "../img/bg-strategies.webp",
+            "jpg": "../img/bg-strategies.jpg",
+        )
+    );
 
     @include bp {
         height: 810px;

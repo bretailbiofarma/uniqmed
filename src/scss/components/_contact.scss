@@ -1,11 +1,37 @@
 .contact {
   padding-top: 88px;
-  padding-bottom: 88px;
+  padding-bottom: 222px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.41) 24.34%);
+  background-position: right center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @include resp(
+    (
+      "webp": "../img/bg-contact-lg.webp",
+      "jpg": "../img/bg-contact-lg.jpg",
+    ),
+    (
+      "webp": "../img/bg-contact-lg.webp",
+      "jpg": "../img/bg-contact-lg.jpg",
+    ),
+    (
+      "webp": "../img/bg-contact-xl.webp",
+      "jpg": "../img/bg-contact-xl.jpg",
+    ),
+    (
+      "webp": "../img/bg-contact-xxl.webp",
+      "jpg": "../img/bg-contact-xxl.jpg",
+    ),
+    (
+      "webp": "../img/bg-contact.webp",
+      "jpg": "../img/bg-contact.jpg",
+    )
+  );
 
   @include bp {
     height: 964px;

@@ -37,21 +37,11 @@ $arrow-down: "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%
 
 @mixin resp($sm, $lg, $xl, $xxl, $or) {
     .js-webp & {
-        background-image: url(map-get($sm, "webp"));
+        background-image: url(map-get($lg, "webp"));
     }
 
     .js-jpg & {
-        background-image: url(map-get($sm, "jpg"));
-    }
-
-    @media only screen and (min-width: 512px) {
-        .js-webp & {
-            background-image: url(map-get($lg, "webp"));
-        }
-
-        .js-jpg & {
-            background-image: url(map-get($lg, "jpg"));
-        }
+        background-image: url(map-get($lg, "jpg"));
     }
 
     @media only screen and (min-width: 992px) {
@@ -74,7 +64,7 @@ $arrow-down: "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%
         }
     }
 
-    @media only screen and (min-width: 1920px) {
+    @media only screen and (min-width: 2000px) {
         .js-webp & {
             background-image: url(map-get($or, "webp"));
         }
@@ -93,15 +83,6 @@ $arrow-down: "data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%
             background-image: url(map-get($lg, "jpg"));
         }
 
-        @media only screen and (min-width: 512px) {
-            .js-webp & {
-                background-image: url(map-get($xl, "webp"));
-            }
-
-            .js-jpg & {
-                background-image: url(map-get($xl, "jpg"));
-            }
-        }
 
         @media only screen and (min-width: 992px) {
             .js-webp & {
